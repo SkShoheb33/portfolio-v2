@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f6f5f1" />
+    <meta
+      name="description"
+      content="Shoheb Shaik — Software Engineer building thoughtful backend, full-stack, and AI-powered products."
+    />
+    <title>Shoheb Shaik — Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              serif: ["Georgia", "serif"],
+            },
+            colors: {
+              paper: "#f6f5f1",
+              ink: "#171816",
+              muted: "#73746f",
+              lime: "#d6ff63",
+              line: "#deded7",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f6f5f1;
+        --ink: #171816;
+        --lime: #d6ff63;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Manrope, system-ui, sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        overflow-x: hidden;
+      }
+      ::selection {
+        background: var(--lime);
+        color: var(--ink);
+      }
+      .mono {
+        font-family: "DM Mono", monospace;
+      }
+      .grain {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      }
+      .nav-glass {
+        background: rgba(246, 245, 241, 0.78);
+        backdrop-filter: blur(16px);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+          transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .delay-1 {
+        transition-delay: 0.12s;
+      }
+      .delay-2 {
+        transition-delay: 0.22s;
+      }
+      .delay-3 {
+        transition-delay: 0.32s;
+      }
+      .hero-title span {
+        display: inline-block;
+        animation: rise 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .hero-title span:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      .hero-title span:nth-child(3) {
+        animation-delay: 0.24s;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(45px) skewY(3deg);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) skewY(0);
+        }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-2deg);
+        }
+        50% {
+          transform: translateY(-12px) rotate(-1deg);
+        }
+      }
+      @keyframes orbit {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .float {
+        animation: float 7s ease-in-out infinite;
+      }
+      .orbit {
+        animation: orbit 24s linear infinite;
+      }
+      .marquee {
+        animation: marquee 28s linear infinite;
+      }
+      @keyframes marquee {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .project-card {
+        transition:
+          transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.45s;
+      }
+      .project-card:hover {
+        transform: translateY(-7px);
+      }
+      .project-card:hover .arrow {
+        transform: translate(3px, -3px);
+      }
+      .arrow {
+        transition: transform 0.25s;
+      }
+      .portrait-frame:after {
+        content: "";
+        position: absolute;
+        inset: 12px -12px -12px 12px;
+        border: 1px solid #b9bab0;
+        border-radius: 2px;
+        z-index: -1;
+      }
+      .skill-pill {
+        transition:
+          background 0.25s,
+          color 0.25s,
+          transform 0.25s;
+      }
+      .skill-pill:hover {
+        background: var(--lime);
+        transform: translateY(-2px);
+      }
+      .underline-link {
+        background-image: linear-gradient(currentColor, currentColor);
+        background-size: 0% 1px;
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        transition: background-size 0.25s;
+      }
+      .underline-link:hover {
+        background-size: 100% 1px;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--lime);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 100;
+        mix-blend-mode: difference;
+        display: none;
+      }
+      @media (min-width: 1024px) {
+        .cursor-dot {
+          display: block;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *:before,
+        *:after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div class="grain"></div>
+    <div class="cursor-dot" id="cursor"></div>
+    <header
+      class="fixed top-0 inset-x-0 z-40 nav-glass border-b border-black/5"
+    >
+      <nav
+        class="max-w-7xl mx-auto px-5 sm:px-8 h-[76px] flex items-center justify-between"
+      >
+        <a href="#home" class="font-extrabold tracking-tight text-lg"
+          >shoheb<span class="text-[#8b9e46]">.</span></a
+        >
+        <div class="hidden md:flex items-center gap-8 text-sm text-[#555650]">
+          <a class="underline-link" href="#about">About</a
+          ><a class="underline-link" href="#work">Work</a
+          ><a class="underline-link" href="#skills">Skills</a
+          ><a class="underline-link" href="#experience">Experience</a>
+        </div>
+        <a
+          href="#contact"
+          class="group flex items-center gap-2 rounded-full bg-ink text-white px-5 py-3 text-sm hover:bg-[#33352f] transition"
+          >Let’s talk
+          <span class="text-lime group-hover:translate-x-1 transition"
+            >↗</span
+          ></a
+        ><button
+          id="menuBtn"
+          class="md:hidden text-2xl ml-3"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+      </nav>
+      <div id="mobileMenu" class="hidden md:hidden px-6 pb-5 space-y-4 text-sm">
+        <a class="block" href="#about">About</a
+        ><a class="block" href="#work">Work</a
+        ><a class="block" href="#skills">Skills</a
+        ><a class="block" href="#experience">Experience</a
+        ><a class="block" href="#contact">Contact</a>
+      </div>
+    </header>
+    <main id="home">
+      <section
+        class="max-w-7xl mx-auto px-5 sm:px-8 pt-36 sm:pt-44 pb-20 sm:pb-28 min-h-[90vh] flex flex-col justify-center"
+      >
+        <div
+          class="grid lg:grid-cols-[1.25fr_.75fr] gap-14 lg:gap-8 items-center"
+        >
+          <div>
+            <div class="reveal visible flex items-center gap-3 mb-8">
+              <span class="relative flex h-2.5 w-2.5"
+                ><span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-50"
+                ></span
+                ><span
+                  class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-600"
+                ></span></span
+              ><span
+                class="mono uppercase tracking-[.18em] text-[11px] text-muted"
+                >Software engineer · Bengaluru, India</span
+              >
+            </div>
+            <h1
+              class="hero-title text-[clamp(3.5rem,8vw,7.8rem)] leading-[.94] tracking-[-.075em] font-extrabold"
+            >
+              <span class="block">Building</span
+              ><span class="block">useful things</span
+              ><span class="block text-[#92958a]"
+                >with code<span class="text-[#a0b858]">.</span></span
+              >
+            </h1>
+            <p
+              class="reveal visible delay-2 mt-8 max-w-xl text-base sm:text-lg leading-8 text-[#666760]"
+            >
+              I’m Shoheb — a software engineer working across backend systems,
+              full-stack products, and AI-powered experiences. I turn ambitious
+              ideas into software people can use.
+            </p>
+            <div
+              class="reveal visible delay-3 flex flex-wrap items-center gap-4 mt-9"
+            >
+              <a
+                href="#work"
+                class="inline-flex items-center gap-3 bg-ink text-white rounded-full px-6 py-4 text-sm hover:-translate-y-1 transition"
+                >Explore my work <span class="text-lime">↘</span></a
+              ><a
+                href="assets/Shoheb-Shaik-Resume.pdf"
+                target="_blank"
+                class="inline-flex items-center gap-2 border border-black/15 rounded-full px-6 py-4 text-sm hover:bg-white transition"
+                >View résumé <span>↗</span></a
+              >
+            </div>
+            <div
+              class="reveal visible delay-3 mt-12 flex items-center gap-5 text-sm text-muted"
+            >
+              <a
+                class="underline-link"
+                href="https://github.com/SkShoheb33/"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub ↗</a
+              ><a
+                class="underline-link"
+                href="https://www.linkedin.com/in/shaikshoheb/"
+                target="_blank"
+                rel="noreferrer"
+                >LinkedIn ↗</a
+              ><a class="underline-link" href="mailto:shaikshoheb9k@gmail.com"
+                >Email ↗</a
+              >
+            </div>
+          </div>
+          <div
+            class="relative max-w-[420px] w-full mx-auto lg:ml-auto mt-3 lg:mt-0 reveal visible delay-2"
+          >
+            <div
+              class="absolute -inset-5 rounded-[48%] bg-[#e8e9df] blur-2xl opacity-80"
+            ></div>
+            <div class="portrait-frame relative w-[82%] mx-auto">
+              <div
+                class="absolute -top-5 -left-5 z-10 bg-lime rounded-full w-[92px] h-[92px] flex items-center justify-center text-center mono text-[10px] leading-4 uppercase tracking-wider orbit"
+              >
+                Curious mind<br />· builder ·
+              </div>
+              <img
+                src="assets/shoheb-portrait.png"
+                alt="Shoheb Shaik in a charcoal suit"
+                class="w-full aspect-[3/4] object-cover object-top rounded-sm shadow-2xl shadow-black/10"
+              />
+            </div>
+            <div
+              class="float absolute -bottom-5 -right-1 sm:right-0 bg-white border border-black/5 shadow-lg rounded-xl p-4 sm:p-5"
+            >
+              <div
+                class="mono text-[10px] text-muted uppercase tracking-widest mb-1"
+              >
+                Currently focused on
+              </div>
+              <div class="font-bold text-sm">
+                Backend + AI products <span class="text-[#91a74b]">✳</span>
+              </div>
+            </div>
+            <div
+              class="absolute -right-2 top-[28%] w-12 h-12 border border-[#b7b9ac] rounded-full flex items-center justify-center text-xl text-[#77796e]"
+            >
+              ✳
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-20 border-t border-line pt-5 flex justify-between text-[10px] mono uppercase tracking-[.18em] text-muted"
+        >
+          <span>Scroll to explore</span><span>01 / A little about me ↓</span>
+        </div>
+      </section>
+      <div class="overflow-hidden border-y border-black/5 py-5 bg-[#ecece4]">
+        <div
+          class="marquee flex whitespace-nowrap gap-8 w-max mono uppercase text-xs tracking-[.18em] text-[#65665e]"
+        >
+          <span>Backend engineering ✳</span><span>AI-powered products ✳</span
+          ><span>Full-stack development ✳</span><span>Thoughtful systems ✳</span
+          ><span>Backend engineering ✳</span><span>AI-powered products ✳</span
+          ><span>Full-stack development ✳</span><span>Thoughtful systems ✳</span
+          ><span>Backend engineering ✳</span><span>AI-powered products ✳</span
+          ><span>Full-stack development ✳</span
+          ><span>Thoughtful systems ✳</span>
+        </div>
+      </div>
+      <section id="about" class="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-32">
+        <div class="grid md:grid-cols-[.7fr_1.3fr] gap-12 lg:gap-24">
+          <div class="reveal">
+            <p
+              class="mono text-[11px] uppercase tracking-[.2em] text-muted mb-4"
+            >
+              01 / About
+            </p>
+            <h2
+              class="text-4xl sm:text-5xl font-bold tracking-[-.06em] leading-tight"
+            >
+              Engineer by craft.<br /><span
+                class="font-serif italic font-normal text-[#85877c]"
+                >Builder by nature.</span
+              >
+            </h2>
+            <div
+              class="mt-8 w-64 h-64 overflow-hidden rounded-sm rotate-[-3deg] shadow-md"
+            >
+              <img
+                src="assets/shoheb-casual.png"
+                alt="Shoheb in a burgundy shirt"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+          </div>
+          <div class="reveal delay-1">
+            <p class="text-xl sm:text-2xl leading-[1.65] tracking-[-.025em]">
+              I enjoy the space where
+              <span class="bg-lime px-1">solid engineering</span> meets creative
+              problem-solving — designing reliable APIs, building clean
+              interfaces, and exploring how AI can make everyday work easier.
+            </p>
+            <p class="mt-6 text-[#6b6c65] leading-8">
+              From building an AI story-to-video platform to experimenting with
+              intelligent career and cooking assistants, I like owning a problem
+              end-to-end: understanding the user, shaping the architecture,
+              shipping the product, and learning from what happens next.
+            </p>
+            <div
+              class="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-10 pt-7 border-t border-line"
+            >
+              <div>
+                <div class="text-3xl font-extrabold tracking-tight">~2 yrs</div>
+                <div class="text-sm text-muted mt-2">Software engineering</div>
+              </div>
+              <div>
+                <div class="text-3xl font-extrabold tracking-tight">36K+</div>
+                <div class="text-sm text-muted mt-2">Views in 20 days*</div>
+              </div>
+              <div>
+                <div class="text-3xl font-extrabold tracking-tight">3+</div>
+                <div class="text-sm text-muted mt-2">Products & projects</div>
+              </div>
+            </div>
+            <p class="text-xs text-muted mt-4">
+              *Audience growth across two channels while validating Arohaa, as
+              reported in my résumé.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="work" class="bg-[#edede7] py-24 sm:py-32">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+          <div
+            class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12"
+          >
+            <div class="reveal">
+              <p
+                class="mono text-[11px] uppercase tracking-[.2em] text-muted mb-4"
+              >
+                02 / Selected work
+              </p>
+              <h2 class="text-4xl sm:text-6xl font-bold tracking-[-.065em]">
+                Things I’ve
+                <span class="font-serif italic font-normal text-[#85877c]"
+                  >worked on.</span
+                >
+              </h2>
+            </div>
+            <p class="reveal delay-1 max-w-sm text-sm leading-6 text-muted">
+              A selection of product ideas, engineering challenges, and
+              experiments that reflect how I build.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            <article
+              class="project-card reveal bg-[#f8f8f3] rounded-sm p-6 sm:p-8 border border-black/5"
+            >
+              <div class="flex items-center justify-between mb-10">
+                <span
+                  class="mono text-[10px] uppercase tracking-widest text-muted"
+                  >01 — AI / Generative media</span
+                ><span class="text-xl arrow">↗</span>
+              </div>
+              <div
+                class="rounded-sm bg-[#20231f] p-5 sm:p-7 min-h-[210px] flex flex-col justify-between overflow-hidden relative"
+              >
+                <div
+                  class="absolute w-48 h-48 rounded-full bg-lime/20 blur-3xl -right-10 -top-10"
+                ></div>
+                <div
+                  class="relative flex items-center gap-2 text-white/60 mono text-[10px]"
+                >
+                  <span class="w-2 h-2 rounded-full bg-lime"></span> AROHAA /
+                  STORY STUDIO
+                </div>
+                <div class="relative">
+                  <div
+                    class="font-serif italic text-4xl sm:text-5xl text-white tracking-tight"
+                  >
+                    Stories into<br /><span class="text-lime"
+                      >moving worlds.</span
+                    >
+                  </div>
+                  <div class="mt-5 flex gap-2">
+                    <span
+                      class="border border-white/20 rounded-full px-3 py-1 text-[10px] text-white/70"
+                      >Narration</span
+                    ><span
+                      class="border border-white/20 rounded-full px-3 py-1 text-[10px] text-white/70"
+                      >AI scenes</span
+                    ><span
+                      class="border border-white/20 rounded-full px-3 py-1 text-[10px] text-white/70"
+                      >Video</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-2xl font-bold tracking-tight mt-7">Arohaa</h3>
+              <p class="text-sm leading-7 text-muted mt-3">
+                An AI-powered platform that transforms text into narrated,
+                scene-based video content. Built the product pipeline and
+                explored agentic workflows and image-generation integrations.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-5">
+                Python <span class="text-muted">·</span> FastAPI
+                <span class="text-muted">·</span> React
+                <span class="text-muted">·</span> AWS
+                <span class="text-muted">·</span> Gemini
+                <span class="text-muted">·</span> FLUX
+              </div>
+              <a
+                href="https://arohaa.net"
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-2 mt-7 text-sm font-semibold underline-link"
+                >Explore Arohaa <span class="arrow">↗</span></a
+              >
+            </article>
+            <article
+              class="project-card reveal delay-1 bg-[#f8f8f3] rounded-sm p-6 sm:p-8 border border-black/5"
+            >
+              <div class="flex items-center justify-between mb-10">
+                <span
+                  class="mono text-[10px] uppercase tracking-widest text-muted"
+                  >02 — AI / Career tech</span
+                ><span class="text-xl arrow">↗</span>
+              </div>
+              <div
+                class="rounded-sm bg-[#e3e7da] p-5 sm:p-7 min-h-[210px] relative overflow-hidden"
+              >
+                <div
+                  class="absolute right-[-20px] bottom-[-80px] w-60 h-60 rounded-full border border-[#a7b18f]"
+                ></div>
+                <div
+                  class="absolute right-[-2px] bottom-[-60px] w-44 h-44 rounded-full border border-[#a7b18f]"
+                ></div>
+                <div
+                  class="relative mono text-[10px] tracking-widest text-[#777e6c]"
+                >
+                  VETERAN / CAREER MAP
+                </div>
+                <div
+                  class="relative mt-8 text-3xl sm:text-4xl font-bold tracking-[-.06em] max-w-xs"
+                >
+                  Find your next
+                  <span class="font-serif italic font-normal">direction.</span>
+                </div>
+                <div
+                  class="relative mt-5 inline-flex bg-white/70 px-3 py-2 text-xs rounded-full"
+                >
+                  Skills → possibilities → growth
+                </div>
+              </div>
+              <h3 class="text-2xl font-bold tracking-tight mt-7">Veteran</h3>
+              <p class="text-sm leading-7 text-muted mt-3">
+                An AI-assisted career transition platform that evaluates skills
+                and interests, adapts assessments to user responses, and
+                recommends relevant career paths.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-5">
+                Python <span class="text-muted">·</span> FastAPI
+                <span class="text-muted">·</span> RAG
+                <span class="text-muted">·</span> PostgreSQL
+                <span class="text-muted">·</span> NestJS
+              </div>
+            </article>
+            <article
+              class="project-card reveal bg-[#f8f8f3] rounded-sm p-6 sm:p-8 border border-black/5"
+            >
+              <div class="flex items-center justify-between mb-10">
+                <span
+                  class="mono text-[10px] uppercase tracking-widest text-muted"
+                  >03 — AI / Food</span
+                ><span class="text-xl arrow">↗</span>
+              </div>
+              <div
+                class="rounded-sm bg-[#f0e2d6] p-5 sm:p-7 min-h-[210px] relative overflow-hidden"
+              >
+                <div
+                  class="absolute -right-5 -top-10 w-48 h-48 rounded-full border-[22px] border-[#d6b8a0]/60"
+                ></div>
+                <div
+                  class="absolute right-7 top-7 w-28 h-28 rounded-full bg-[#c6d0ad] shadow-inner"
+                ></div>
+                <div
+                  class="absolute right-[70px] top-[72px] w-4 h-4 rounded-full bg-[#8d9a70]"
+                ></div>
+                <div
+                  class="relative mono text-[10px] tracking-widest text-[#8d7460]"
+                >
+                  PALATE / SMART COOKING
+                </div>
+                <div
+                  class="relative mt-8 text-4xl font-serif italic text-[#493c32]"
+                >
+                  A little more<br />delicious.
+                </div>
+                <div class="relative mt-4 text-xs text-[#8d7460]">
+                  Video to recipe · Ingredients · Guidance
+                </div>
+              </div>
+              <h3 class="text-2xl font-bold tracking-tight mt-7">PALATE</h3>
+              <p class="text-sm leading-7 text-muted mt-3">
+                An AI-powered cooking assistant for recipe discovery,
+                customization, and guided cooking, including YouTube
+                video-to-recipe conversion and ingredient extraction.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-5">
+                React Native <span class="text-muted">·</span> TypeScript
+                <span class="text-muted">·</span> Python
+                <span class="text-muted">·</span> Google ADK
+              </div>
+            </article>
+            <article
+              class="project-card reveal delay-1 bg-[#f8f8f3] rounded-sm p-6 sm:p-8 border border-black/5"
+            >
+              <div class="flex items-center justify-between mb-10">
+                <span
+                  class="mono text-[10px] uppercase tracking-widest text-muted"
+                  >04 — Web / Healthcare</span
+                ><span class="text-xl arrow">↗</span>
+              </div>
+              <div
+                class="rounded-sm bg-[#dce9e9] p-5 sm:p-7 min-h-[210px] relative overflow-hidden"
+              >
+                <div
+                  class="absolute right-10 top-8 w-28 h-28 border border-[#8ba8a7] rounded-full flex items-center justify-center"
+                >
+                  <div
+                    class="w-16 h-16 bg-[#8ba8a7] rounded-full flex items-center justify-center text-white text-4xl font-light"
+                  >
+                    +
+                  </div>
+                </div>
+                <div
+                  class="relative mono text-[10px] tracking-widest text-[#678887]"
+                >
+                  HEALTHKARD / CARE, CONNECTED
+                </div>
+                <div
+                  class="relative mt-8 text-4xl font-bold tracking-[-.06em] text-[#254d4d]"
+                >
+                  Health,<br />in one place.
+                </div>
+                <div class="relative mt-4 text-xs text-[#678887]">
+                  Records · Appointments · Access
+                </div>
+              </div>
+              <h3 class="text-2xl font-bold tracking-tight mt-7">HealthKard</h3>
+              <p class="text-sm leading-7 text-muted mt-3">
+                A healthcare web and hybrid mobile application for managing
+                medical records and appointments, with responsive interfaces and
+                integrated backend services.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-5">
+                React <span class="text-muted">·</span> Tailwind CSS
+                <span class="text-muted">·</span> Node.js
+                <span class="text-muted">·</span> MongoDB
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+        id="skills"
+        class="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-32"
+      >
+        <div class="grid md:grid-cols-[.7fr_1.3fr] gap-12 lg:gap-24">
+          <div class="reveal">
+            <p
+              class="mono text-[11px] uppercase tracking-[.2em] text-muted mb-4"
+            >
+              03 / Toolbox
+            </p>
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-[-.06em]">
+              The tools<br />behind the
+              <span class="font-serif italic font-normal text-[#85877c]"
+                >work.</span
+              >
+            </h2>
+            <p class="mt-6 text-sm leading-7 text-muted max-w-sm">
+              A flexible toolkit for building end-to-end products — from API
+              design and data modeling to interfaces and AI integrations.
+            </p>
+          </div>
+          <div class="space-y-8 reveal delay-1">
+            <div class="pb-7 border-b border-line">
+              <h3
+                class="mono text-[10px] uppercase tracking-[.18em] text-muted mb-4"
+              >
+                Backend & languages
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Python</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >FastAPI</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Node.js</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Express.js</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >NestJS</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >JavaScript</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >TypeScript</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Java</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >C#</span
+                >
+              </div>
+            </div>
+            <div class="pb-7 border-b border-line">
+              <h3
+                class="mono text-[10px] uppercase tracking-[.18em] text-muted mb-4"
+              >
+                Frontend & mobile
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >React.js</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Next.js</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >React Native</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Tailwind CSS</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >HTML & CSS</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Vite</span
+                >
+              </div>
+            </div>
+            <div class="pb-7 border-b border-line">
+              <h3
+                class="mono text-[10px] uppercase tracking-[.18em] text-muted mb-4"
+              >
+                Cloud, data & delivery
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >AWS</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Docker</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Kubernetes</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >PostgreSQL</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >MongoDB</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Git & GitHub</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >REST APIs</span
+                >
+              </div>
+            </div>
+            <div>
+              <h3
+                class="mono text-[10px] uppercase tracking-[.18em] text-muted mb-4"
+              >
+                AI & product thinking
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >LLMs</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >RAG</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Agentic workflows</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Google ADK</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >OpenAI</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Prompt engineering</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >System design</span
+                ><span
+                  class="skill-pill border border-black/10 rounded-full px-4 py-2 text-sm"
+                  >Agile</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="experience"
+        class="bg-[#20221e] text-[#f5f4ee] py-24 sm:py-32"
+      >
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+          <div class="reveal mb-14">
+            <p
+              class="mono text-[11px] uppercase tracking-[.2em] text-white/45 mb-4"
+            >
+              04 / Experience
+            </p>
+            <h2 class="text-4xl sm:text-6xl font-bold tracking-[-.065em]">
+              Where I’ve
+              <span class="font-serif italic font-normal text-lime"
+                >grown.</span
+              >
+            </h2>
+          </div>
+          <div class="border-t border-white/15">
+            <article
+              class="reveal grid md:grid-cols-[.55fr_1.45fr] gap-6 py-9 border-b border-white/15"
+            >
+              <div>
+                <p class="mono text-xs text-white/45">NOV 2024 — DEC 2025</p>
+                <p class="text-sm text-white/45 mt-2">Hyderabad, Telangana</p>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold">Founding Software Engineer</h3>
+                <p class="text-lime mt-1">Vargah Software Private Limited</p>
+                <ul
+                  class="mt-5 space-y-3 text-sm leading-7 text-white/65 list-disc pl-5"
+                >
+                  <li>
+                    Designed and developed Arohaa, an AI-powered platform that
+                    generates video content from text.
+                  </li>
+                  <li>
+                    Built full-stack components with React, FastAPI, Node.js,
+                    AWS, and modern frontend technologies.
+                  </li>
+                  <li>
+                    Developed agentic workflows using Google ADK and integrated
+                    Gemini 2.5 Pro with few-shot prompting.
+                  </li>
+                  <li>
+                    Integrated FLUX Kontext and ComfyUI into the AI
+                    content-generation pipeline.
+                  </li>
+                  <li>
+                    Helped grow two health and wellness YouTube channels to 36K
+                    views, 1,900 likes, and 388 subscribers in 20 days.
+                  </li>
+                </ul>
+              </div>
+            </article>
+            <article
+              class="reveal grid md:grid-cols-[.55fr_1.45fr] gap-6 py-9 border-b border-white/15"
+            >
+              <div>
+                <p class="mono text-xs text-white/45">FEB 2024 — MAY 2024</p>
+                <p class="text-sm text-white/45 mt-2">Hyderabad, Telangana</p>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold">Software Engineering Intern</h3>
+                <p class="text-lime mt-1">Vargah Software Private Limited</p>
+                <ul
+                  class="mt-5 space-y-3 text-sm leading-7 text-white/65 list-disc pl-5"
+                >
+                  <li>
+                    Improved AI gameplay performance for a Hex board game using
+                    transposition tables.
+                  </li>
+                  <li>
+                    Reduced computational overhead with parallel processing and
+                    memoization techniques.
+                  </li>
+                  <li>
+                    Engineered Big Hex, a scalable extension of Simple Hex
+                    supporting larger board configurations.
+                  </li>
+                </ul>
+                <p
+                  class="mono text-[10px] uppercase tracking-widest text-white/40 mt-5"
+                >
+                  Unity Engine · C#
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-32">
+        <div class="grid md:grid-cols-[.7fr_1.3fr] gap-12 lg:gap-24">
+          <div class="reveal">
+            <p
+              class="mono text-[11px] uppercase tracking-[.2em] text-muted mb-4"
+            >
+              05 / Education & recognition
+            </p>
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-[-.06em]">
+              The foundation.
+            </h2>
+          </div>
+          <div class="reveal delay-1">
+            <div class="pb-7 border-b border-line">
+              <p class="mono text-[10px] uppercase tracking-widest text-muted">
+                2020 — 2024
+              </p>
+              <h3 class="text-xl font-bold mt-3">
+                B.Tech, Computer Science & Engineering
+              </h3>
+              <p class="text-muted mt-2">
+                R.V.R. & J.C. College of Engineering
+              </p>
+              <p class="mt-3 text-sm">CGPA <strong>8.68 / 10</strong></p>
+            </div>
+            <div class="py-7 border-b border-line">
+              <p class="mono text-[10px] uppercase tracking-widest text-muted">
+                2020
+              </p>
+              <h3 class="text-xl font-bold mt-3">Higher Secondary — M.P.C.</h3>
+              <p class="text-muted mt-2">
+                Sri Chaitanya Junior College · CGPA 9.7
+              </p>
+            </div>
+            <div class="pt-7">
+              <h3 class="text-xl font-bold mb-5">A few highlights</h3>
+              <div class="space-y-4 text-sm leading-6 text-[#62635c]">
+                <p class="flex gap-3">
+                  <span class="text-[#95a94e]">✳</span
+                  ><span
+                    >Published research at AIIDE 2024 on an optimized Hex-game
+                    algorithm using intra-move transposition tables.</span
+                  >
+                </p>
+                <p class="flex gap-3">
+                  <span class="text-[#95a94e]">✳</span
+                  ><span
+                    >Won first place in three collegiate web development
+                    competitions.</span
+                  >
+                </p>
+                <p class="flex gap-3">
+                  <span class="text-[#95a94e]">✳</span
+                  ><span
+                    >Secured third place in a national-level programming
+                    challenge.</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="px-5 sm:px-8 pb-8">
+        <div
+          class="max-w-7xl mx-auto bg-lime rounded-sm px-6 sm:px-14 py-14 sm:py-20 relative overflow-hidden"
+        >
+          <div
+            class="absolute -right-20 -top-28 w-80 h-80 border border-black/10 rounded-full"
+          ></div>
+          <div
+            class="absolute -right-4 -top-12 w-52 h-52 border border-black/10 rounded-full"
+          ></div>
+          <div class="relative max-w-3xl">
+            <p
+              class="mono text-[11px] uppercase tracking-[.2em] text-black/55 mb-5"
+            >
+              06 / Have a good problem?
+            </p>
+            <h2
+              class="text-5xl sm:text-7xl font-extrabold tracking-[-.075em] leading-[.98]"
+            >
+              Let’s make<br /><span class="font-serif italic font-normal"
+                >something matter.</span
+              >
+            </h2>
+            <p class="mt-6 text-black/65 max-w-lg leading-7">
+              I’m always interested in thoughtful teams, meaningful engineering
+              challenges, and ideas worth building. Have one in mind?
+            </p>
+            <a
+              href="mailto:shaikshoheb9k@gmail.com"
+              class="inline-flex items-center gap-4 mt-8 bg-ink text-white px-6 py-4 rounded-full text-sm hover:-translate-y-1 transition"
+              >shaikshoheb9k@gmail.com
+              <span class="text-lime text-lg">↗</span></a
+            >
+            <div class="mt-8 flex flex-wrap gap-6 text-sm">
+              <a
+                href="https://www.linkedin.com/in/shaikshoheb/"
+                target="_blank"
+                rel="noreferrer"
+                class="underline-link"
+                >LinkedIn ↗</a
+              ><a
+                href="https://github.com/SkShoheb33/"
+                target="_blank"
+                rel="noreferrer"
+                class="underline-link"
+                >GitHub ↗</a
+              ><a
+                href="assets/Shoheb-Shaik-Resume.pdf"
+                target="_blank"
+                class="underline-link"
+                >Download résumé ↓</a
+              >
+            </div>
+          </div>
+        </div>
+        <footer
+          class="max-w-7xl mx-auto py-7 flex flex-col sm:flex-row justify-between gap-3 text-xs text-muted"
+        >
+          <span
+            >© <span id="year"></span> Shoheb Shaik. Made with intention.</span
+          ><a href="#home" class="underline-link">Back to top ↑</a
+          ><span class="mono">DESIGNED TO STAY CURIOUS</span>
+        </footer>
+      </section>
+    </main>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          }),
+        { threshold: 0.12 },
+      );
+      document
+        .querySelectorAll(".reveal:not(.visible)")
+        .forEach((el) => observer.observe(el));
+      const menuBtn = document.getElementById("menuBtn"),
+        mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuBtn.textContent = mobileMenu.classList.contains("hidden")
+          ? "☰"
+          : "✕";
+      });
+      mobileMenu.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuBtn.textContent = "☰";
+        }),
+      );
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const cursor = document.getElementById("cursor");
+      window.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+    </script>
+  </body>
+</html>
